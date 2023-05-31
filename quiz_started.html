@@ -51,10 +51,10 @@
         </div>
     </div>
     <div class="row qs_action_btns_row" ng-show = "quizStarted_init">
-        <div class="col l6 s6 m6 center">
+        <div class="col l6 s6 m6 center" style="display: flex;">
             <a class="btn qs_btns previous" ng-hide="slide==0" ng-click="beforeslide()"><i class="material-icons qs_btn_icon">navigate_before</i>Previous</a>
         </div>
-        <div class="col l3 s3 m3" style="text-align: right;">
+        <div class="col l3 s3 m3" style="text-align: right; display: flex;">
             <a class="btn qs_btns next center" ng-hide="slide==(questions.length - 1)" ng-click="nextslide()">Next<i class="material-icons qs_btn_icon">navigate_next</i></a>
             <a class="btn qs_btns next center" ng-show="slide==(questions.length - 1)" ng-click="validate(); gotoscore()">Submit</a>
         </div>
