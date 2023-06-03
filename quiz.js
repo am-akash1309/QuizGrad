@@ -1,6 +1,6 @@
 const quizapp = angular.module("quizapp",['ui.router'])
 
-var user = [{"name":"Nishikanth", "admin":"Test Admin"}]
+var user = []
 var topic_user_selectec = ""
 
 quizapp.controller("bot1", function($scope, $state, $http, $document){
