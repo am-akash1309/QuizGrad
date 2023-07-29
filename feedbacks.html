@@ -1,0 +1,28 @@
+<div>
+    <div class="row lp_title_row">
+        <div class="col l3 s4 m4 center adminPageLogo">
+            <div class="ap_logo_div">
+                <div class="logoQuiz">Quiz</div>
+                <div class="logoGrad">Grad</div>
+            </div>
+        </div>
+        <div class="col l9 s8 m8 lp_titlerow_loginbtn_align qs_username_col">
+            <a class="qs_username right">Admin: <i class="material-icons qs_person_icon_align">person</i>{{adminname}}</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row" ng-repeat="feedback in feedbacks">
+        <div class="col l10 s12 m12 offset-l1">
+            <div class="card adminpage_card_addquestions">
+                <div class="card-content">
+                    <div class="admpg_get_topic">Subject: {{feedback.subject}}</div>
+                    <div class="admpg_get_topic">{{feedback.body}}</div>
+                    <br>
+                    <div class="admpg_get_topic">User: {{feedback.name}}</div>
+                    <div class="admpg_get_topic">Email: {{feedback.email}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

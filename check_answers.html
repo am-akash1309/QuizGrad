@@ -1,0 +1,153 @@
+<div>
+    <div class="navBarDiv">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <div class="logoQuiz">Quiz</div>
+                    <div class="logoGrad">Grad</div>
+                </div>
+              <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+              <ul class="right">
+                <li>
+                    <a class="qs_username"><i class="material-icons qs_person_icon_align">person </i>{{username}}</a>
+                </li>
+              </ul>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    <a class="lp_titlerow_link modal-trigger" href="#modal3" target="_blank">
+                        <span class="material-symbols-outlined">send</span> Request Topic
+                    </a>
+                </li>
+                <li>
+                    <a class="lp_titlerow_link modal-trigger" href="#modal2" target="_blank">
+                        <span class="material-symbols-outlined">comment</span> Feedback
+                    </a>
+                </li>
+                <li>
+                    <a class="lp_titlerow_link modal-trigger" href="#news" target="_blank">
+                        <span class="material-symbols-outlined">mark_email_unread</span> News
+                    </a>
+                </li>
+                <li>
+                    <a class="lp_titlerow_link modal-trigger" href="#aboutme" target="_blank">
+                        <span class="material-symbols-outlined">sentiment_very_satisfied</span> About Me
+                    </a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <div>
+        <div class="row" ng-repeat = "qa in QuestionWithAnswer">
+            <div class="col s12 m12 l8 offset-l2">
+                <div class="card checkAns_card">
+                    <div class="card-content">
+                        <div class="checkAns_comment green-text" ng-show="crt_comment($index)">
+                            <span class="material-symbols-outlined">check</span> Correct
+                        </div>
+                        <div class="checkAns_comment red-text" ng-show="wrong_comment($index)">
+                            <span class="material-symbols-outlined">dangerous</span> Wrong
+                        </div>
+                        <div class="checkAns_comment blue-text" ng-show="unans_comment($index)">
+                            <span class="material-symbols-outlined">crisis_alert</span> Unanswered
+                        </div>
+                        <div class="checkAns_questionDiv">{{qa.question}}</div>
+                        <div class="checkAns_options" ng-style="getStyle($index,1)">{{qa.option1}}</div>
+                        <div class="checkAns_options" ng-style="getStyle($index,2)">{{qa.option2}}</div>
+                        <div class="checkAns_options" ng-style="getStyle($index,3)">{{qa.option3}}</div>
+                        <div class="checkAns_options" ng-style="getStyle($index,4)">{{qa.option4}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center"><a class="btn sp_btn" ng-click="gohome()">Home</a></div>
+    </div>
+
+    <div id="aboutme" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>ABOUT ME</h4>
+          <p>So, You're curious about me? 🤭 Hehe, Gotcha 🙃</p>
+          <p>Mmm... Where should I strat? 🤔</p>
+          <p>Alright, I'm 18 and I am currently pursuing my B.Tech Artificial Intelligence and Data Science Degree at Sri Ramakrishna Engineering College 😙</p>
+          <p>And Yeah, I LOVE to code stuffs and as you can see, this is the outcome of it 😁</p>
+          <p>You could say I am a full stack developer who could design a complete web-applications ✌</p>
+          <p>I just do it for the fun ✨</p>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+    </div>
+
+    <div id="feedback" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>FEEDBACK</h4>
+            <p>Is there something that your're not satisfied with the page? You are at the right place. Please feel free to send me a Feedback and I'll do my best to improve the site.</p>
+            <div class="req_topic">
+                <span class="lrs_input_span">Subject</span>
+                <input type="text" ng-model="subject" placeholder="Subject of the Feedback" maxlength="50">
+            </div>
+            <br>
+            <div class="req_topic">
+                <textarea ng-model="body" class="fixed-textarea" placeholder="Body of the Feedback"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat green-text" ng-click="sendFeedback()">SUBMIT</a>
+        </div>
+    </div>
+
+    <div id="reqtopic" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>REQUEST TOPICS</h4>
+            <p>The topic you're looking for is not in the Quiz? Now then, send me a request below. I'll do my best to add the topic to the Quiz soon :)</p>
+            <div class="req_topic">
+                <span class="lrs_input_span">Topic</span>
+                <input type="text" ng-model="req_topic" placeholder="Enter your topic here" maxlength="25">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat green-text" ng-click="send_topic_req()">SUBMIT</a>
+        </div>
+    </div>
+
+    <div class="modal modal-fixed-footer" id="news">
+        <div class="modal-content">
+            <h4>NEWS</h4>
+            <ul class="collapsible">
+                <li ng-repeat="el in news">
+                    <div class="collapsible-header">{{el.name}}<div class="newsDate">{{el.date}}</div></div>
+                    <div class="collapsible-body">{{el.message}}</div>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a class="lp_titlerow_link modal-trigger" href="#modal3" target="_blank">
+                <span class="material-symbols-outlined">send</span> Request Topic
+            </a>
+        </li>
+        <li>
+            <a class="lp_titlerow_link modal-trigger" href="#modal2" target="_blank">
+                <span class="material-symbols-outlined">comment</span> Feedback
+            </a>
+        </li>
+        <li>
+            <a class="lp_titlerow_link modal-trigger" href="#news" target="_blank">
+                <span class="material-symbols-outlined">mark_email_unread</span> News
+            </a>
+        </li>
+        <li>
+            <a class="lp_titlerow_link modal-trigger" href="#aboutme" target="_blank">
+                <span class="material-symbols-outlined">sentiment_very_satisfied</span> About Me
+            </a>
+        </li>
+    </ul>
+</div>
